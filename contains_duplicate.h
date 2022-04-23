@@ -2,18 +2,13 @@
 
 #include <iostream>
 #include <vector>
-#include <random>
 #include <set>
 #include <unordered_set>
-#include <algorithm>
-#include <numeric>
 #include <thread>
-#include "measurer.h"
+#include "tools.h"
 
 namespace contains_duplicate
 {
-    constexpr int ARRAY_SIZE = 2000000;
-
     bool brut_force_solution(std::vector<int>& nums)
     {
         for (size_t i = 0; i < nums.size(); i++)
@@ -64,17 +59,6 @@ namespace contains_duplicate
         return false;
     }
 
-    std::vector<int> getDistinctNums()
-    {
-        std::set<int> uniqueInts;
-        std::vector<int> vec(ARRAY_SIZE);
-        std::iota(vec.begin(), vec.end(), 0);
-        auto seed = std::chrono::system_clock::now().time_since_epoch().count();
-        std::shuffle(vec.begin(), vec.end(), std::default_random_engine(seed));
-        
-        return vec;
-    }
-
     void run(std::vector<int> vec, std::function<bool(std::vector<int>&)> alg)
     {
         if (alg(vec))
@@ -85,21 +69,21 @@ namespace contains_duplicate
 
     void run()
     {
-        measurer::run("sort_solution", [](){
-            run(getDistinctNums(), sort_solution);
+        tools::measureTime("sort_solution", [](){
+            run(tools::getDistinctArray(), sort_solution);
         });
 
-        measurer::run("set_solution", [](){
-            run(getDistinctNums(), set_solution);
+        tools::measureTime("set_solution", [](){
+            run(tools::getDistinctArray(), set_solution);
         });
         //std::cout << "fncomp call num = " << fncompCallNum << std::endl;
 
-        measurer::run("hash_set_solution", [](){
-            run(getDistinctNums(), hash_set_solution);
+        tools::measureTime("hash_set_solution", [](){
+            run(tools::getDistinctArray(), hash_set_solution);
         });
 
-        /*measurer::run("brut_force_solution", [](){
-            run(getDistinctNums(), brut_force_solution);
+        /*tools::measureTime("brut_force_solution", [](){
+            run(tools::getDistinctArray(), brut_force_solution);
         });*/
     }
 }
