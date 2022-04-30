@@ -20,4 +20,13 @@ namespace tools
   constexpr int DEFAULT_ARR_SIZE = 1000000;
   std::vector<int> getArray(int size = DEFAULT_ARR_SIZE);
   std::vector<int> getDistinctArray(int size = DEFAULT_ARR_SIZE);
+  
+  template<typename T>
+  void printCollection(const T& collection) 
+  {
+    for (const auto& item : collection)
+      std::cout << item << ' ';
+
+    std::cout << std::endl;
+  }
 }
