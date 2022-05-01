@@ -8,12 +8,12 @@ void ass() { std::cout << "ass\n"; }
 
 namespace tools
 {
-  std::vector<int> getArray(int size)
+  std::vector<int> getArray(int size, int max)
   {
     std::vector<int> vec(size);
     auto seed = std::chrono::system_clock::now().time_since_epoch().count();
     std::default_random_engine generator(seed);
-    std::generate(vec.begin(), vec.end(), generator);
+    std::generate(vec.begin(), vec.end(), [&](){ return generator() % max; });
     return vec;
   }
 

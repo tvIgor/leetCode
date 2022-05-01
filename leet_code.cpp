@@ -5,10 +5,12 @@
 #include "contains_duplicate.h"
 #include "intersect_arrays_ii.h"
 #include "plus_one.h"
+#include "move_zeros.h"
 
 int main()
 {
     //contains_duplicate::run();
     //intersect_arrays_ii::run();
-    plus_one::run();
+    //plus_one::run();
+    move_zeros::run();
 }

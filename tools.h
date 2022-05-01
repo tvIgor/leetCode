@@ -18,7 +18,7 @@ namespace tools
   }
 
   constexpr int DEFAULT_ARR_SIZE = 1000000;
-  std::vector<int> getArray(int size = DEFAULT_ARR_SIZE);
+  std::vector<int> getArray(int size = DEFAULT_ARR_SIZE, int max = INT_MAX);
   std::vector<int> getDistinctArray(int size = DEFAULT_ARR_SIZE);
   
   template<typename T>
