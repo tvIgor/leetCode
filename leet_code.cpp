@@ -6,11 +6,13 @@
 #include "intersect_arrays_ii.h"
 #include "plus_one.h"
 #include "move_zeros.h"
+#include "two_sums.h"
 
 int main()
 {
     //contains_duplicate::run();
     //intersect_arrays_ii::run();
     //plus_one::run();
-    move_zeros::run();
+    //move_zeros::run();
+    two_sums::run();
 }

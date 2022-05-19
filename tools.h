@@ -17,9 +17,11 @@ namespace tools
       std::cout << opName << " took " << timeSpan << " sec\n";
   }
 
+  int getRandom(int max = INT_MAX);
+
   constexpr int DEFAULT_ARR_SIZE = 1000000;
   std::vector<int> getArray(int size = DEFAULT_ARR_SIZE, int max = INT_MAX);
-  std::vector<int> getDistinctArray(int size = DEFAULT_ARR_SIZE);
+  std::vector<int> getDistinctArray(int minValue = 0, int size = DEFAULT_ARR_SIZE);
   
   template<typename T>
   void printCollection(const T& collection) 
