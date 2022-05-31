@@ -7,6 +7,7 @@
 #include "plus_one.h"
 #include "move_zeros.h"
 #include "two_sums.h"
+#include "print_order.h"
 
 int main()
 {
@@ -14,5 +15,6 @@ int main()
     //intersect_arrays_ii::run();
     //plus_one::run();
     //move_zeros::run();
-    two_sums::run();
+    //two_sums::run();
+    print_order::run();
 }
