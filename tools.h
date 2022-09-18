@@ -4,6 +4,7 @@
 #include <chrono>
 #include <functional>
 #include <iostream>
+#include <random>
 
 namespace tools
 {
@@ -30,5 +31,27 @@ namespace tools
       std::cout << item << ' ';
 
     std::cout << std::endl;
+  }
+
+  template<typename T>
+  T& shuffle(T& collection)
+  {
+    auto seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::shuffle(collection.begin(), collection.end(), std::default_random_engine(seed));
+    return collection;
+  }
+
+  template<typename T>
+  T getShuffledCopy(const T& collection)
+  {
+    T ret{collection};
+    return shuffle(ret);
+  }
+
+  template<typename T>
+  T& sort(T& collection)
+  {
+    std::sort(collection.begin(), collection.end());
+    return collection;
   }
 }
