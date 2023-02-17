@@ -9,6 +9,7 @@
 #include "two_sums.h"
 #include "print_order.h"
 #include "valid_anagram.h"
+#include "missing_int.h"
 
 int main()
 {
@@ -18,5 +19,5 @@ int main()
     //move_zeros::run();
     //two_sums::run();
     //print_order::run();
-    valid_anagram::run();
+    //missing_int::run();
 }
