@@ -1,5 +1,5 @@
 #OBJS specifies which files to compile as part of the project
-OBJS = leet_code.cpp tools.cpp
+OBJS = *.cpp
 
 #CC specifies which compiler we're using
 CC = g++
@@ -14,7 +14,7 @@ LIBRARY_PATHS = -L""
 # -w suppresses all warnings
 # -Wl,-subsystem,windows gets rid of the console window
 #COMPILER_FLAGS = -w -Wl,-subsystem,windows
-COMPILER_FLAGS = -g -std=c++17 -O0
+COMPILER_FLAGS = -g -std=c++20 -O0
 
 #LINKER_FLAGS specifies the libraries we're linking against
 LINKER_FLAGS = -lmingw32

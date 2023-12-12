@@ -2,22 +2,13 @@
 //
 
 #include <iostream>
-#include "contains_duplicate.h"
-#include "intersect_arrays_ii.h"
-#include "plus_one.h"
-#include "move_zeros.h"
-#include "two_sums.h"
-#include "print_order.h"
-#include "valid_anagram.h"
-#include "missing_int.h"
+#include "tools.h"
 
-int main()
+int main(int argc, char* argv[])
 {
-    //contains_duplicate::run();
-    //intersect_arrays_ii::run();
-    //plus_one::run();
-    //move_zeros::run();
-    //two_sums::run();
-    //print_order::run();
-    //missing_int::run();
+    if (argc != 2)
+        return 0;
+
+    tools::getProblem(argv[1]).solve();
+    return 0;
 }
