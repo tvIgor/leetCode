@@ -41,14 +41,19 @@ namespace tools
     return pMap;
   }
 
-  problem::problem(const char* name)
+  problem::problem(const char* name) :
+  _name(std::filesystem::path(name).stem().string())
   {
-    const auto& fileName = std::filesystem::path(name).stem().string();
-    getProblemMap()[fileName] = this;
+    getProblemMap()[_name] = this;
   }
 
   void problem::solve() const
   {
+    std::cout 
+      << magenta("Problem: ")
+      << magenta(_name)
+      << "\n";
+      
     body();
   }
 
@@ -59,6 +64,20 @@ namespace tools
     if (found == getProblemMap().end())
       throw std::runtime_error("Problem is not found");
     
+    return *found->second;
+  }
+
+  const problem& getDefaultProblem()
+  {
+    auto& mmm = getProblemMap();
+    const auto defaultNum = std::ranges::count_if(mmm, [](const auto& pair){ return pair.second->isDefault(); });
+    if (defaultNum == 0)
+      throw std::runtime_error("There are no default problem.");
+
+    if (defaultNum > 1)
+      throw std::runtime_error("There are more than one default problems.");
+
+    auto found = std::ranges::find_if(mmm, [](const auto& pair){ return pair.second->isDefault(); });
     return *found->second;
   }
 

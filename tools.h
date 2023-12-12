@@ -29,6 +29,9 @@ namespace tools
   }
 
   template<typename T>
+  std::string magenta(const T& val) { return make(val, color::magenta); };
+
+  template<typename T>
   std::string red(const T& val) { return make(val, color::red); };
 
   template<typename T>
@@ -101,13 +104,18 @@ namespace tools
       explicit problem(const char* name);
       virtual ~problem() = default;
 
+      virtual bool isDefault() const = 0;
       void solve() const;
 
     protected:
       virtual void body() const = 0;
+
+    private:
+      const std::string _name;
   };
 
   const problem& getProblem(const std::string& name);
+  const problem& getDefaultProblem();
   std::vector<std::string> getProblems();
 }
 
@@ -115,6 +123,17 @@ namespace tools
   public:\
     explicit p_impl(const char* name) : tools::problem(name) {}\
   protected:\
+    virtual bool isDefault() const override { return false; }\
+    virtual void body() const override;\
+} pObj(__FILE__);}\
+\
+void p_impl::body() const
+
+#define DEFAULT_LEET_PROBLEM namespace { class p_impl final : public tools::problem {\
+  public:\
+    explicit p_impl(const char* name) : tools::problem(name) {}\
+  protected:\
+    virtual bool isDefault() const override { return true; }\
     virtual void body() const override;\
 } pObj(__FILE__);}\
 \

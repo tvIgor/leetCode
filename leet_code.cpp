@@ -7,8 +7,9 @@
 int main(int argc, char* argv[])
 {
     if (argc != 2)
-        return 0;
+        tools::getDefaultProblem().solve();
+    else
+        tools::getProblem(argv[1]).solve();
 
-    tools::getProblem(argv[1]).solve();
     return 0;
 }
