@@ -1,5 +1,5 @@
 #OBJS specifies which files to compile as part of the project
-OBJS = *.cpp
+OBJS = src/*.cpp
 
 #CC specifies which compiler we're using
 CC = g++
@@ -20,7 +20,7 @@ COMPILER_FLAGS = -g -std=c++20 -O0
 LINKER_FLAGS = -lmingw32
 
 #OBJ_NAME specifies the name of our exectuable
-OBJ_NAME = leetCode
+OBJ_NAME = bin/leetCode
 
 #This is the target that compiles our executable
 all : $(OBJS)
