@@ -6,9 +6,33 @@
 #include <iostream>
 #include <random>
 #include <sstream>
+#include <memory>
 
 namespace tools
 {
+  struct treeNode {
+    int val;
+    std::unique_ptr<treeNode> left;
+    std::unique_ptr<treeNode> right;
+    treeNode() : val(0), left(nullptr), right(nullptr) {}
+    treeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+  };
+  using treeNodePtr = std::unique_ptr<treeNode>;
+
+  void printTree(const treeNodePtr& tree, int itemWidth = 2);
+
+  struct listNode {
+    int val{0};
+    listNode* next{nullptr};
+    listNode() : val(0) {}
+    listNode(int v) : val(v) {}
+    listNode(int v, listNode* n) : val(v), next(n) {}
+  };
+
+  listNode* generateList(int size);
+  void deleteList(listNode* list);
+  void printList(const listNode* list);
+
   enum class color {
     black = 30,
     red,

@@ -31,6 +31,9 @@
 *.out
 *.app
 
-VSCode
+# VSCode
 .vscode
 .suo
+
+# files
+src\testsite.h
